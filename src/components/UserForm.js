@@ -24,7 +24,7 @@ const UserForm = () => {
         </div>
         <label htmlFor="">Taksit Aralığı</label>
         <select
-          className="h-10 w-full p-1 border[0.5px] outline-orange-300 rounded-md border-gray-300"
+          className="h-10 w-full p-1  border[0.5px] outline-orange-300 rounded-md border-gray-300"
           id="paymentPeriodInput"
           name="paymentPeriod"
           onChange={(e) => handleForm(e)}
@@ -32,7 +32,7 @@ const UserForm = () => {
           defaultValue="aylık"
         >
           {paymentPeriodOptions.map((item) => (
-            <option className="text-left" key={item} value={item}>
+            <option className="text-left " key={item} value={item}>
               {item}
             </option>
           ))}
