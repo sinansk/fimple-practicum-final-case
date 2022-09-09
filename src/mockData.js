@@ -1,14 +1,14 @@
 export const paymentPeriodOptions = [
   {
     name: "haftalık",
-    value: "7",
+    value: "0.25",
   },
   {
     name: "aylık",
-    value: "30",
+    value: "1",
   },
   {
     name: "yıllık",
-    value: "360",
+    value: "12",
   },
 ];

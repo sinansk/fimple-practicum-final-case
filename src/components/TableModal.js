@@ -12,7 +12,7 @@ const TableModal = () => {
     <div
       className={`${
         !isModalOpen && `hidden`
-      } p-10 my-10 w-[90vw] h-[calc(100vh-8rem] relative rounded-md border-[0.5px] bg-white border-gray-50 shadow-lg mx-auto`}
+      } p-10 my-10 w-[90vw] z-40 h-[calc(100vh-8rem] relative rounded-md border-[0.5px] bg-white border-gray-50 shadow-lg mx-auto`}
     >
       <button
         onClick={handleModal}

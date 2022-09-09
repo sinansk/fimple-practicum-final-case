@@ -131,7 +131,7 @@ const UserForm = () => {
     let loan = form.loan;
     let taksit = 1;
     let kalanAnapara = form.loan;
-    let profitInterest = form.profit / 100;
+    let profitInterest = (form.profit / 100) * form.paymentPeriod;
     for (let time = form.paymentNumber; time > 0; time--) {
       console.log(typeof taksit);
       let time2 = time - 1;
@@ -254,6 +254,8 @@ const UserForm = () => {
               key={i}
               selected={i === 1}
               value={item.value}
+              onChange={(e) => handleForm(e)}
+              onBlur={(e) => handleForm(e)}
             >
               {item.name}
             </option>
