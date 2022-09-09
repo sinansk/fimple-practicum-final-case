@@ -2,16 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "./context/ThemeContext";
-import { FormProvider } from "./context/InputContext";
+import { FormProvider } from "./context/FormContext";
+import { ResultProvider } from "./context/ResultContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
       <FormProvider>
-        <App />
+        <ResultProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ResultProvider>
       </FormProvider>
     </ThemeProvider>
   </React.StrictMode>

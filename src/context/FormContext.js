@@ -4,12 +4,12 @@ const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
   const defaultFormValues = {
-    loan: "",
-    paymentPeriod: "",
-    paymentNumber: "",
-    profit: "",
-    kkdf: "",
-    bsmv: "",
+    loan: 0,
+    paymentPeriod: 0,
+    paymentNumber: 0,
+    profit: 0,
+    kkdf: 0,
+    bsmv: 0,
   };
 
   const [form, setForm] = useState(defaultFormValues);
