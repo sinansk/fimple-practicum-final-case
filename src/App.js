@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import ResultPage from "./pages/ResultPage";
 function App() {
   return (
-    <div className=" ">
+    <div className="relative">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

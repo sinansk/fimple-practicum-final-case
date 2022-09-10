@@ -12,11 +12,11 @@ const TableModal = () => {
     <div
       className={`${
         !isModalOpen && `hidden`
-      } p-10 my-10 w-[90vw] z-40 h-[calc(100vh-8rem] relative rounded-md border-[0.5px] bg-white border-gray-50 shadow-lg mx-auto`}
+      } p-10 my-10 w-[90vw] z-50 h-full relative rounded-md border-[0.5px] bg-white border-gray-50 shadow-lg mx-auto`}
     >
       <button
         onClick={handleModal}
-        className="btn rounded-full px-2.5 py-1 border-[1px] border-orange-400 text-white bg-orange-500/90 hover:bg-orange-500/80 border-orange-500-70 hover:text-white absolute top-3 right-3"
+        className="btn rounded-full px-2.5 py-1 border-[1px] border-orange-400 text-white bg-orange-500/90 hover:bg-orange-500/80 border-orange-500-70 hover:text-white absolute  top-3 right-3"
       >
         X
       </button>

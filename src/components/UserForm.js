@@ -12,116 +12,7 @@ const UserForm = () => {
     setForm((prev) => ({ ...prev, [e.target.name]: Number(e.target.value) }));
   };
   console.log(form);
-  let data = [
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-    {
-      taksit: "",
-      aylıkFaiz: "",
-      aylıkÖdeme: "",
-      aylıkKkdf: "",
-      aylıkBsmv: "",
-      aylıkAnaPara: "",
-      kalanAnaPara: "",
-    },
-  ];
+
   const calculateLoan = (e) => {
     e.preventDefault();
 
@@ -132,42 +23,58 @@ const UserForm = () => {
     let taksit = 1;
     let kalanAnapara = form.loan;
     let profitInterest = (form.profit / 100) * form.paymentPeriod;
+    let newFaiz =
+      ((form.profit +
+        (form.profit * form.kkdf) / 100 +
+        (form.profit * form.bsmv) / 100) *
+        form.paymentPeriod) /
+      100;
     for (let time = form.paymentNumber; time > 0; time--) {
+      let resultModal = {
+        taksit: "",
+        aylıkFaiz: "",
+        aylıkÖdeme: "",
+        aylıkKkdf: "",
+        aylıkBsmv: "",
+        aylıkAnaPara: "",
+        kalanAnaPara: "",
+      };
       console.log(typeof taksit);
       let time2 = time - 1;
       console.log(time2);
 
       console.log(kalanAnapara, "kalanAnapara");
-      const x = Math.pow(1 + profitInterest, time);
+      const x = Math.pow(1 + newFaiz, time);
       console.log(profitInterest, "profitInterest");
       console.log(x);
-      const monthlyProfit = (kalanAnapara * profitInterest) / (1 - 1 / x);
+      const monthlyProfit = (kalanAnapara * newFaiz) / (1 - 1 / x);
       console.log(monthlyProfit);
-      data[time2].aylıkÖdeme = monthlyProfit;
+      resultModal.aylıkÖdeme = monthlyProfit;
       let aylıkFaiz = profitInterest * kalanAnapara;
-      data[time2].aylıkFaiz = aylıkFaiz;
+      resultModal.aylıkFaiz = aylıkFaiz;
       console.log("faiz:", aylıkFaiz);
       const kkdf = (aylıkFaiz * 15) / 100;
-      data[time2].aylıkKkdf = kkdf;
+      resultModal.aylıkKkdf = kkdf;
       const bsmv = (aylıkFaiz * 5) / 100;
-      data[time2].aylıkBsmv = bsmv;
+      resultModal.aylıkBsmv = bsmv;
       const newPayment = monthlyProfit + kkdf + bsmv;
 
       console.log("newPayment:", newPayment);
-      const aylıkAnaPara = monthlyProfit - aylıkFaiz;
-      data[time2].aylıkAnaPara = aylıkAnaPara;
+      const aylıkAnaPara = monthlyProfit - aylıkFaiz - kkdf - bsmv;
+      resultModal.aylıkAnaPara = aylıkAnaPara;
       console.log("firstAna:", aylıkAnaPara);
       kalanAnapara -= aylıkAnaPara;
-      data[time2].kalanAnaPara = kalanAnapara;
+      resultModal.kalanAnaPara = kalanAnapara;
       aylıkFaiz = profitInterest * kalanAnapara;
       console.log("kalanAna:", kalanAnapara.toFixed(3));
-      data[time2].taksit = taksit;
-      console.log("data", data);
+      resultModal.taksit = taksit;
+
       taksit += 1;
       console.log(taksit);
       time2 -= 1;
+      result.push(resultModal);
     }
-    setResult(data.reverse());
+
     navigate("/result", { replace: true });
   };
 
@@ -228,9 +135,9 @@ const UserForm = () => {
       onSubmit={(e) => calculateLoan(e)}
       className="bg-gray-50 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit sm:w-[50vw] sm:h-[50vh] "
     >
-      <div className="col-span-3 flex flex-col gap-2 ">
+      <div className="flex flex-col col-span-3 gap-2 ">
         <label htmlFor="">Kredi Tutarı</label>
-        <div className="flex items-center relative">
+        <div className="relative flex items-center">
           <input
             className="h-10 2xl:h-12  w-full p-1 border[0.5px] outline-orange-300 rounded-md border-gray-300"
             type="text"
@@ -238,7 +145,7 @@ const UserForm = () => {
             placeholder="100.000"
             onChange={(e) => handleForm(e)}
           ></input>
-          <p className="ml-auto absolute right-1">TL</p>
+          <p className="absolute ml-auto right-1">TL</p>
         </div>
         <label htmlFor="">Taksit Aralığı</label>
         <select
@@ -247,6 +154,7 @@ const UserForm = () => {
           name="paymentPeriod"
           onChange={(e) => handleForm(e)}
           onBlur={(e) => handleForm(e)}
+          defaultValue="1"
         >
           {paymentPeriodOptions.map((item, i) => (
             <option
@@ -270,7 +178,7 @@ const UserForm = () => {
           onChange={(e) => handleForm(e)}
         ></input>
       </div>
-      <div className="col-span-3 flex flex-col gap-2 flex-1">
+      <div className="flex flex-col flex-1 col-span-3 gap-2">
         <label htmlFor="">Faiz Oranı</label>
         <input
           className="h-10 2xl:h-12 w-full p-1 border[0.5px] outline-orange-300 rounded-md border-gray-300"
@@ -296,7 +204,7 @@ const UserForm = () => {
           onChange={(e) => handleForm(e)}
         ></input>
       </div>
-      <button className="btn bg-orange-500/90 hover:bg-orange-500/80 text-gray-50 font-semibold h-10 2xl:h-12  col-span-6 rounded-md">
+      <button className="h-10 col-span-6 font-semibold rounded-md btn bg-orange-500/90 hover:bg-orange-500/80 text-gray-50 2xl:h-12">
         HESAPLA
       </button>
     </form>
