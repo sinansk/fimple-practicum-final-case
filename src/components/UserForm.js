@@ -53,9 +53,9 @@ const UserForm = () => {
       let aylıkFaiz = profitInterest * kalanAnapara;
       resultModal.aylıkFaiz = aylıkFaiz;
       console.log("faiz:", aylıkFaiz);
-      const kkdf = (aylıkFaiz * 15) / 100;
+      const kkdf = (aylıkFaiz * form.kkdf) / 100;
       resultModal.aylıkKkdf = kkdf;
-      const bsmv = (aylıkFaiz * 5) / 100;
+      const bsmv = (aylıkFaiz * form.bsmv) / 100;
       resultModal.aylıkBsmv = bsmv;
       const newPayment = monthlyProfit + kkdf + bsmv;
 
@@ -154,7 +154,7 @@ const UserForm = () => {
           name="paymentPeriod"
           onChange={(e) => handleForm(e)}
           onBlur={(e) => handleForm(e)}
-          defaultValue="1"
+          defaultValue={1}
         >
           {paymentPeriodOptions.map((item, i) => (
             <option

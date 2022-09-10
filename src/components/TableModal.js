@@ -20,7 +20,7 @@ const TableModal = () => {
       >
         X
       </button>
-      <table className="table-auto text-lg w-full text-center border-collapse divide-y divide-solid">
+      <table className="w-full text-lg text-center border-collapse divide-y table-auto divide-solid">
         <thead>
           <tr>
             <th>Taksit No</th>
@@ -34,7 +34,7 @@ const TableModal = () => {
         </thead>
         <tbody className="divide-y divide-solid">
           {result?.map((taksit) => (
-            <tr>
+            <tr key={taksit.taksit}>
               <td>{Math.round(taksit?.taksit)}</td>
               <td>{Math.round(taksit?.aylıkÖdeme)}</td>
               <td>{Math.round(taksit?.aylıkAnaPara).toFixed(2)}</td>
