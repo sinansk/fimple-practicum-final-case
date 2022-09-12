@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="h-20 absolute-0 right-0 left-0 sm:h-[12vh] w-full flex justify-center items-center bg-orange-400">
+    <div className="h-20 absolute-0 right-0 left-0 sm:h-[12vh] w-full flex justify-center items-center bg-orange-400 dark:bg-slate-800">
       <div className="flex flex-col items-center gap-2 text-gray-200 dark:text-slate-300  dark:hover:text-slate-100">
         <a
           href="https://github.com/sinansk/popupsmart-react-practicum"

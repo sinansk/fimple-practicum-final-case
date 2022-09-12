@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "payment-bg-image": "url('../src/assets/payments.svg')",
+        "payment-bg": "url('../src/assets/payments.svg')",
         "payment-bg-image-mirror": "url('../src/assets/paymentsMirrored.svg')",
+        "dark-payment-bg": "url('../src/assets/paymentsBlue.svg')",
       },
       // Define animation class
       animation: {
@@ -21,4 +22,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: "class",
 };

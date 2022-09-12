@@ -7,7 +7,7 @@ export const FormProvider = ({ children }) => {
     loan: 0,
     paymentPeriod: 0,
     paymentNumber: 0,
-    profit: 0,
+    interest: 0,
     kkdf: 0,
     bsmv: 0,
   };
