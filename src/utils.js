@@ -1,5 +1,5 @@
 export const money = new Intl.NumberFormat("tr-TR", {
-  // style: "currency",
+  style: "currency",
   currency: "TRY",
   minimumFractionDigits: 2,
 });

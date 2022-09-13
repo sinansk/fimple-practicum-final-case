@@ -3,14 +3,13 @@ import { useResult } from "../context/ResultContext";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validations from "./formValidation";
-import { money } from "../utils";
+
 const UserForm = () => {
   const navigate = useNavigate();
   const { setResult } = useResult();
 
   const calculateLoan = (values) => {
     // e.preventDefault();
-    console.log(values);
     let installment = 1;
     let remainPrincipal = values.loan;
     let interestRate = (values.interest / 100) * values.paymentPeriod;
@@ -21,40 +20,54 @@ const UserForm = () => {
         values.paymentPeriod) /
       100;
     let data = [];
-    for (
-      let paymentNumber = values.paymentNumber;
-      paymentNumber > 0;
-      paymentNumber--
-    ) {
-      let resultModal = {
-        installment: "",
-        interestPayment: "",
-        payment: "",
-        kkdf: "",
-        bsmv: "",
-        principal: "",
-        remainPrincipal: "",
-      };
+    const calculate = () => {
+      for (
+        let paymentNumber = values.paymentNumber;
+        paymentNumber > 0;
+        paymentNumber--
+      ) {
+        let resultModal = {
+          installment: "",
+          interestPayment: "",
+          payment: "",
+          kkdf: "",
+          bsmv: "",
+          principal: "",
+          remainPrincipal: "",
+        };
 
-      const x = Math.pow(1 + totalRate, paymentNumber);
-      const payment = (remainPrincipal * totalRate) / (1 - 1 / x);
-      resultModal.payment = money.format(Math.round(payment));
-      let interestPayment = interestRate * remainPrincipal;
-      resultModal.interestPayment = money.format(Math.round(interestPayment));
-      const kkdf = (interestPayment * values.kkdf) / 100;
-      resultModal.kkdf = money.format(Math.round(kkdf));
-      const bsmv = (interestPayment * values.bsmv) / 100;
-      resultModal.bsmv = money.format(Math.round(bsmv));
-      const principal = payment - interestPayment - kkdf - bsmv;
-      resultModal.principal = money.format(Math.round(principal));
-      remainPrincipal -= principal;
-      resultModal.remainPrincipal = money.format(Math.round(remainPrincipal));
-      interestPayment = interestRate * remainPrincipal;
-      resultModal.installment = installment;
-      installment += 1;
-      data.push(resultModal);
-      setResult(data);
-    }
+        const x = Math.pow(1 + totalRate, paymentNumber);
+        const payment = (remainPrincipal * totalRate) / (1 - 1 / x);
+        resultModal.payment = Math.round(payment);
+        let interestPayment = interestRate * remainPrincipal;
+        resultModal.interestPayment = Math.round(interestPayment);
+        const kkdf = (interestPayment * values.kkdf) / 100;
+        resultModal.kkdf = Math.round(kkdf);
+        const bsmv = (interestPayment * values.bsmv) / 100;
+        resultModal.bsmv = Math.round(bsmv);
+        const principal = payment - interestPayment - kkdf - bsmv;
+        resultModal.principal = Math.round(principal);
+        remainPrincipal -= principal;
+        resultModal.remainPrincipal = Math.round(remainPrincipal);
+        interestPayment = interestRate * remainPrincipal;
+        resultModal.installment = installment;
+        installment += 1;
+        data.push(resultModal);
+      }
+    };
+    calculate();
+    setResult({
+      months: data,
+      totalPayment: data.reduce((acc, next) => (acc += next.payment), 0),
+      totalInterestPayment: data.reduce(
+        (acc, next) => (acc += next.interestPayment),
+        0
+      ),
+      totalTaxPayment:
+        data.reduce((acc, next) => (acc += next.kkdf), 0) +
+        data.reduce((acc, next) => (acc += next.bsmv), 0),
+    });
+
     navigate("/result", { replace: true });
   };
 
@@ -98,7 +111,7 @@ const UserForm = () => {
           handleSubmit,
           isSubmitting,
         }) => (
-          <Form className="bg-gray-50 dark:bg-slate-700  border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit sm:w-[50vw] sm:h-[50vh] ">
+          <Form className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit sm:w-[50vw] sm:h-[50vh] ">
             <div className="flex flex-col col-span-3 gap-2 ">
               <label htmlFor="loan" className="dark:text-gray-50">
                 {errors.loan && touched.loan ? (
@@ -115,7 +128,7 @@ const UserForm = () => {
                 <Field
                   className={`${
                     errors.loan && touched.loan && "border-2 border-red-400"
-                  } h-10 2xl:h-12 w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md `}
+                  } form-input`}
                   type="number"
                   name="loan"
                   placeholder="100.000"
@@ -144,7 +157,7 @@ const UserForm = () => {
                   errors.paymentPeriod &&
                   touched.paymentPeriod &&
                   "border-2 border-red-400"
-                } h-10 2xl:h-12  w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md `}
+                } form-input`}
                 id="paymentPeriodInput"
                 name="paymentPeriod"
                 type="number"
@@ -181,7 +194,7 @@ const UserForm = () => {
                   errors.paymentNumber &&
                   touched.paymentNumber &&
                   "border-2 border-red-400"
-                } h-10 2xl:h-12  w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md `}
+                } form-input`}
                 type="number"
                 name="paymentNumber"
                 placeholder="12"
@@ -207,7 +220,7 @@ const UserForm = () => {
                   errors.interest &&
                   touched.interest &&
                   "border-2 border-red-400"
-                } h-10 2xl:h-12 w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md `}
+                } form-input`}
                 type="number"
                 name="interest"
                 placeholder="%2,28"
@@ -229,7 +242,7 @@ const UserForm = () => {
               <Field
                 className={`${
                   errors.kkdf && touched.kkdf && "border-2 border-red-400"
-                } h-10 2xl:h-12  w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md `}
+                } form-input`}
                 type="number"
                 name="kkdf"
                 placeholder="%15"
@@ -251,7 +264,7 @@ const UserForm = () => {
               <Field
                 className={`${
                   errors.bsmv && touched.bsmv && "border-2 border-red-400"
-                } h-10 2xl:h-12  w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md `}
+                } form-input`}
                 type="number"
                 name="bsmv"
                 placeholder="%5"
@@ -260,10 +273,7 @@ const UserForm = () => {
                 value={values.bsmv}
               />
             </div>
-            <button
-              type="submit"
-              className="h-10 col-span-6 font-semibold dark:bg-cyan-500 rounded-md btn bg-orange-500/90 hover:bg-orange-500/80 text-gray-50 2xl:h-12"
-            >
+            <button type="submit" className="btn btn-primary">
               HESAPLA
             </button>
           </Form>
