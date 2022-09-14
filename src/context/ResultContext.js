@@ -5,9 +5,14 @@ const ResultContext = createContext();
 export const ResultProvider = ({ children }) => {
   const defaultValues = {
     months: [],
+    paymentPeriod: "",
+    numberOfPayment: "",
+    loan: "",
+    payment: "",
     totalPayment: "",
     totalInterestPayment: "",
-    totalTaxPayment: "",
+    totalKkdfPayment: "",
+    totalBsmvPayment: "",
   };
   const [result, setResult] = useState(defaultValues);
 

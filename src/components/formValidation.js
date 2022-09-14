@@ -5,7 +5,7 @@ const validations = Yup.object().shape({
   paymentPeriod: Yup.number()
     .positive()
     .required("Lütfen taksit aralığı seçiniz.")
-    .oneOf([0.25, 1, 12])
+    .oneOf([7 / 30, 1, 365 / 30])
     .label("Taksit Aralığı"),
   paymentNumber: Yup.number()
     .positive()

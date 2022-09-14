@@ -3,12 +3,20 @@ import { useResult } from "../context/ResultContext";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validations from "./formValidation";
+import { money } from "../utils";
 
 const UserForm = () => {
   const navigate = useNavigate();
   const { setResult } = useResult();
 
   const calculateLoan = (values) => {
+    let periodName =
+      values.paymentPeriod === "0.23333333333333334"
+        ? `HAFTALIK`
+        : values.paymentPeriod === 1
+        ? `AYLIK`
+        : `YILLIK`;
+
     // e.preventDefault();
     let installment = 1;
     let remainPrincipal = values.loan;
@@ -63,9 +71,12 @@ const UserForm = () => {
         (acc, next) => (acc += next.interestPayment),
         0
       ),
-      totalTaxPayment:
-        data.reduce((acc, next) => (acc += next.kkdf), 0) +
-        data.reduce((acc, next) => (acc += next.bsmv), 0),
+      totalKkdfPayment: data.reduce((acc, next) => (acc += next.kkdf), 0),
+      totalBsmvPayment: data.reduce((acc, next) => (acc += next.bsmv), 0),
+      paymentPeriod: periodName,
+      numberOfPayment: values.paymentNumber,
+      loan: values.loan,
+      payment: data[0].payment,
     });
 
     navigate("/result", { replace: true });
@@ -164,7 +175,7 @@ const UserForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.paymentPeriod}
-                defaultValue={0.25}
+                defaultValue={30}
               >
                 {paymentPeriodOptions.map((item, i) => (
                   <option
@@ -173,6 +184,7 @@ const UserForm = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={item.value}
+                    type="number"
                   >
                     {item.name}
                   </option>
