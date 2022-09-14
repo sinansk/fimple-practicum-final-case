@@ -6,7 +6,7 @@ import ResultPage from "./pages/ResultPage";
 
 function App() {
   return (
-    <div className="relative selection:text-gray-50 transition-colors duration-700 selection:bg-orange-400 dark:selection:bg-gray-400 dark:bg-slate-700">
+    <div className="relative selection:text-gray-50 transition-colors duration-700 selection:bg-orange-400 dark:selection:bg-gray-400 dark:bg-slate-700 min-h-screen">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

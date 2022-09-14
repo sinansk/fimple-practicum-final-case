@@ -8,11 +8,11 @@ const Result = () => {
   const modalRef = useRef();
   return (
     <>
-      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit sm:w-[50vw] sm:h-80 ">
+      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw]  sm:w-[50vw] min-h-80 h-80">
         <h2 className="text-center text-3xl py-1">
           {`${money.format(result.loan)}  ${result.numberOfPayment}  ${
             result.paymentPeriod
-          } KREDİ`}
+          } VADELİ KREDİ`}
         </h2>
         <div className="sm:grid text-xl sm:grid-cols-3 gap-3 h-4/6">
           <div className="dark:bg-gray-600 dark:border-cyan-500 flex flex-col items-center justify-center bg-white rounded-md shadow-sm text-center border-[0.5px] border-orange-400">

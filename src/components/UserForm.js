@@ -3,7 +3,6 @@ import { useResult } from "../context/ResultContext";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validations from "./formValidation";
-import { money } from "../utils";
 
 const UserForm = () => {
   const navigate = useNavigate();
@@ -12,10 +11,10 @@ const UserForm = () => {
   const calculateLoan = (values) => {
     let periodName =
       values.paymentPeriod === "0.23333333333333334"
-        ? `HAFTALIK`
+        ? `HAFTA`
         : values.paymentPeriod === 1
-        ? `AYLIK`
-        : `YILLIK`;
+        ? `AY`
+        : `YIL`;
 
     // e.preventDefault();
     let installment = 1;
@@ -122,7 +121,7 @@ const UserForm = () => {
           handleSubmit,
           isSubmitting,
         }) => (
-          <Form className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit sm:w-[50vw] sm:h-[50vh] ">
+          <Form className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit min-h-80 sm:w-[50vw]">
             <div className="flex flex-col col-span-3 gap-2 ">
               <label htmlFor="loan" className="dark:text-gray-50">
                 {errors.loan && touched.loan ? (
