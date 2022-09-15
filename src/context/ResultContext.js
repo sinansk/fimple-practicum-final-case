@@ -14,7 +14,7 @@ export const ResultProvider = ({ children }) => {
     totalKkdfPayment: "",
     totalBsmvPayment: "",
   };
-  const [result, setResult] = useState(defaultValues);
+  const [result, setResult] = useState(null);
 
   const values = {
     result,

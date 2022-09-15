@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoutes from "./ProtectedRoutes";
 import ResultPage from "./pages/ResultPage";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -10,7 +11,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/result" element={<ResultPage />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/result" element={<ResultPage />} />
+        </Route>
       </Routes>
       <Footer />
     </div>
