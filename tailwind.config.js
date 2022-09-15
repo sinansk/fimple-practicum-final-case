@@ -4,19 +4,25 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "payment-bg": "url('../src/assets/payments.svg')",
-        "payment-bg-image-mirror": "url('../src/assets/paymentsMirrored.svg')",
-        "dark-payment-bg": "url('../src/assets/paymentsBlue.svg')",
+        "right-bg-orange": "url('../src/assets/right-bg-orange.svg')",
+        "right-bg-blue": "url('../src/assets/right-bg-blue.svg')",
+        "left-bg-orange": "url('../src/assets/left-bg-orange.svg')",
+        "left-bg-blue": "url('../src/assets/left-bg-blue.svg')",
       },
       // Define animation class
       animation: {
-        "ltr-linear": "move-bg 500ms linear",
+        "ltr-linear-right": "move-bg-right 600ms linear",
+        "ltr-linear-left": "move-bg-left 600ms linear",
       },
       // Define keyframes
       keyframes: {
-        "move-bg": {
+        "move-bg-right": {
           "0%": { "background-position": "150% 0" },
           "100%": { "background-position": "100% 0" },
+        },
+        "move-bg-left": {
+          "0%": { "background-position": "-50% 0" },
+          "100%": { "background-position": "100 0" },
         },
       },
     },

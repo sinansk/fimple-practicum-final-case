@@ -1,24 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
+import { ResultProvider } from "./context/ResultContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "./context/ThemeContext";
-import { FormProvider } from "./context/FormContext";
-import { ResultProvider } from "./context/ResultContext";
+import ReactDOM from "react-dom/client";
+import React from "react";
+import App from "./App";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <FormProvider>
-        <ResultProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </ResultProvider>
-      </FormProvider>
+      <ResultProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ResultProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

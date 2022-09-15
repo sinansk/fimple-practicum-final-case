@@ -12,10 +12,13 @@
 
 @layer components {
   .form-input {
-    @apply h-10 2xl:h-12 w-full p-1 outline-orange-300 dark:outline-green-500 rounded-md;
+    @apply w-full h-10 p-1 rounded-md 2xl:h-12 outline-orange-300 dark:outline-green-500;
   }
   .btn-primary {
-    @apply h-10 col-span-6 font-semibold dark:bg-cyan-500 rounded-md bg-orange-500/90 hover:bg-orange-500/80 2xl:h-12 text-gray-50;
+    @apply h-10 col-span-6 font-semibold rounded-md dark:bg-cyan-500 bg-orange-500/90 hover:bg-orange-500/80 dark:hover:bg-cyan-500/80 2xl:h-12 text-gray-50;
+  }
+  .result-small-container {
+    @apply dark:bg-gray-700 dark:border-cyan-500 flex flex-col items-center justify-center bg-white rounded-md shadow-sm text-center border-[0.5px] border-orange-400;
   }
 }
 @layer utilities {
@@ -29,16 +32,3 @@
     scrollbar-width: none; /* Firefox */
   }
 }
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */

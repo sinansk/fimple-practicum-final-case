@@ -1,11 +1,12 @@
-import React from "react";
-import { money } from "../utils";
 import { useResult } from "../context/ResultContext";
+import { money } from "../utils";
+import React from "react";
+
 const ResultTable = () => {
   const { result } = useResult();
   return (
-    <table className="p-5 h-full w-full text-lg text-center border-collapse table-auto divide-solid">
-      <thead className="p-5 sticky top-0 left-0 mr-5 w-full text-orange-500 dark:text-cyan-400 border-b-2 bg-white dark:bg-gray-700 ">
+    <table className="w-full h-full p-5 text-lg text-center border-collapse table-auto divide-solid">
+      <thead className="sticky top-0 left-0 w-full p-5 mr-5 text-orange-500 bg-white border-b-2 dark:text-cyan-400 dark:bg-gray-700 ">
         <tr>
           <th>Taksit No</th>
           <th>Taksit Tutarı</th>
@@ -33,7 +34,7 @@ const ResultTable = () => {
         ))}
       </tbody>
       <tfoot>
-        <tr className=" bg-gray-100 min-w-full w-full text-lg font-semibold dark:bg-slate-800 sticky bottom-0 left-0 right-0  text-orange-500 dark:text-cyan-400 ">
+        <tr className="sticky bottom-0 left-0 right-0 w-full min-w-full text-lg font-semibold text-orange-500 bg-gray-100 dark:bg-slate-800 dark:text-cyan-400">
           <td>TOPLAM</td>
           <td>{money.format(result?.totalPayment)}</td>
           <td>{money.format(result?.loan)}</td>

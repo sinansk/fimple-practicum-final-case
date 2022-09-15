@@ -1,12 +1,8 @@
 import Result from "../components/Result";
-import ResultTable from "../components/ResultTable";
 
 const ResultPage = () => {
   return (
-    <div className="w-screen sm:w-[95vw] mx-auto -mb-1 bg-[right_88px_top_0] sm:bg-payment-bg sm:dark:bg-dark-payment-bg bg-no-repeat bg-contain animate-ltr-linear min-h-[74vh] flex flex-col justify-center items-center">
-      {/* <Modal /> */}
-      {/* <UserForm /> */}
-      {/* <ResultTable /> */}
+    <div className=" relative min-h-screen sm:min-h-[calc(76vh)] flex flex-col justify-center items-center w-screen mx-auto bg-[left_88px_top_0] sm:bg-left-bg-orange sm:dark:bg-left-bg-blue bg-no-repeat bg-contain animate-ltr-linear-left  ">
       <Result />
     </div>
   );

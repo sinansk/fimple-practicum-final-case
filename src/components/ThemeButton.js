@@ -1,7 +1,7 @@
 import { useTheme } from "../context/ThemeContext";
+
 const ThemeButton = () => {
   const { theme, setTheme } = useTheme();
-
   const handleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };

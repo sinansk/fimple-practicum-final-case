@@ -6,8 +6,9 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
 
   useEffect(() => {
-    if (theme !== "dark") document.body.classList.remove("dark");
-    else document.body.classList.add("dark");
+    theme !== "dark"
+      ? document.body.classList.remove("dark")
+      : document.body.classList.add("dark");
   }, [theme]);
 
   useEffect(() => {

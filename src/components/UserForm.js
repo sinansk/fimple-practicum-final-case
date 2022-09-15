@@ -1,7 +1,7 @@
-import { paymentPeriodOptions } from "../mockData";
-import { useResult } from "../context/ResultContext";
-import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useResult } from "../context/ResultContext";
+import { paymentPeriodOptions } from "../periodData";
+import { useNavigate } from "react-router-dom";
 import validations from "./formValidation";
 
 const UserForm = () => {
@@ -15,8 +15,6 @@ const UserForm = () => {
         : values.paymentPeriod === 1
         ? `AY`
         : `YIL`;
-
-    // e.preventDefault();
     let installment = 1;
     let remainPrincipal = values.loan;
     let interestRate = (values.interest / 100) * values.paymentPeriod;
@@ -42,7 +40,7 @@ const UserForm = () => {
           principal: "",
           remainPrincipal: "",
         };
-
+        //https://financeformulas.net/Loan_Payment_Formula.html used this formula//
         const x = Math.pow(1 + totalRate, paymentNumber);
         const payment = (remainPrincipal * totalRate) / (1 - 1 / x);
         resultModal.payment = Math.round(payment);
@@ -107,21 +105,12 @@ const UserForm = () => {
         //   }
         //   return errors;
         // }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values) => {
           calculateLoan(values);
-          setSubmitting(false);
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <Form className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] h-fit min-h-80 sm:w-[50vw]">
+        {({ values, errors, touched, handleChange, handleBlur }) => (
+          <Form className="m-auto bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] sm:w-[50vw]">
             <div className="flex flex-col col-span-3 gap-2 ">
               <label htmlFor="loan" className="dark:text-gray-50">
                 {errors.loan && touched.loan ? (
