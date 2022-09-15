@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
+import PageNotFound from "./pages/PageNotFound";
 import ResultPage from "./pages/ResultPage";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -14,6 +15,7 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path="/result" element={<ResultPage />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>

@@ -8,6 +8,8 @@ module.exports = {
         "right-bg-blue": "url('../src/assets/right-bg-blue.svg')",
         "left-bg-orange": "url('../src/assets/left-bg-orange.svg')",
         "left-bg-blue": "url('../src/assets/left-bg-blue.svg')",
+        "not-found-bg-orange": "url('../src/assets/404-orange-cat.svg')",
+        "not-found-bg-blue": "url('../src/assets/404-blue-cat.svg')",
       },
       // Define animation class
       animation: {
