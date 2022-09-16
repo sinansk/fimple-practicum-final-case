@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useResult } from "../context/ResultContext";
 import { paymentPeriodOptions } from "../periodData";
 import { useNavigate } from "react-router-dom";
+import CurrencyInput from "../CurrencyInput";
 import validations from "./formValidation";
 
 const UserForm = () => {
@@ -16,7 +17,8 @@ const UserForm = () => {
         ? `AY`
         : `YIL`;
     let installment = 1;
-    let remainPrincipal = values.loan;
+    let loan = values.loan.replace(/[.,\s]/g, "");
+    let remainPrincipal = loan;
     let interestRate = (values.interest / 100) * values.paymentPeriod;
     let totalRate =
       ((values.interest +
@@ -44,16 +46,22 @@ const UserForm = () => {
         const x = Math.pow(1 + totalRate, paymentNumber);
         const payment = (remainPrincipal * totalRate) / (1 - 1 / x);
         resultModal.payment = Math.round(payment);
+
         let interestPayment = interestRate * remainPrincipal;
         resultModal.interestPayment = Math.round(interestPayment);
+
         const kkdf = (interestPayment * values.kkdf) / 100;
         resultModal.kkdf = Math.round(kkdf);
+
         const bsmv = (interestPayment * values.bsmv) / 100;
         resultModal.bsmv = Math.round(bsmv);
+
         const principal = payment - interestPayment - kkdf - bsmv;
         resultModal.principal = Math.round(principal);
+
         remainPrincipal -= principal;
         resultModal.remainPrincipal = Math.round(remainPrincipal);
+
         interestPayment = interestRate * remainPrincipal;
         resultModal.installment = installment;
         installment += 1;
@@ -62,7 +70,7 @@ const UserForm = () => {
     };
     calculate();
     setResult({
-      months: data,
+      payments: data,
       totalPayment: data.reduce((acc, next) => (acc += next.payment), 0),
       totalInterestPayment: data.reduce(
         (acc, next) => (acc += next.interestPayment),
@@ -72,7 +80,7 @@ const UserForm = () => {
       totalBsmvPayment: data.reduce((acc, next) => (acc += next.bsmv), 0),
       paymentPeriod: periodName,
       numberOfPayment: values.paymentNumber,
-      loan: values.loan,
+      loan: loan,
       payment: data[0].payment,
     });
 
@@ -94,17 +102,6 @@ const UserForm = () => {
         initialStatus={{
           sent: "nope",
         }}
-        // validate={(values) => {
-        //   const errors = {};
-        //   if (!values.email) {
-        //     errors.email = "Required";
-        //   } else if (
-        //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        //   ) {
-        //     errors.email = "Invalid email address";
-        //   }
-        //   return errors;
-        // }}
         onSubmit={(values) => {
           calculateLoan(values);
         }}
@@ -124,12 +121,12 @@ const UserForm = () => {
                 )}
               </label>
               <div className="relative flex items-center">
-                <Field
+                <CurrencyInput
                   className={`${
                     errors.loan && touched.loan && "border-2 border-red-400"
                   } form-input`}
-                  type="number"
                   name="loan"
+                  type="text"
                   placeholder="100.000"
                   onChange={handleChange}
                   onBlur={handleBlur}

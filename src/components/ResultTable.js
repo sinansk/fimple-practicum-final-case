@@ -18,18 +18,18 @@ const ResultTable = () => {
         </tr>
       </thead>
       <tbody className="divide-y divide-solid">
-        {result?.months.map((taksit) => (
+        {result?.payments.map((payment) => (
           <tr
             className="odd:bg-gray-100 dark:odd:bg-gray-500"
-            key={taksit.installment}
+            key={payment.installment}
           >
-            <td>{taksit?.installment}</td>
-            <td>{money.format(taksit?.payment)}</td>
-            <td>{money.format(taksit?.principal)}</td>
-            <td>{money.format(taksit?.remainPrincipal)}</td>
-            <td>{money.format(taksit?.interestPayment)}</td>
-            <td>{money.format(taksit?.kkdf)}</td>
-            <td>{money.format(taksit?.bsmv)}</td>
+            <td>{payment?.installment}</td>
+            <td>{money.format(payment?.payment)}</td>
+            <td>{money.format(payment?.principal)}</td>
+            <td>{money.format(payment?.remainPrincipal)}</td>
+            <td>{money.format(payment?.interestPayment)}</td>
+            <td>{money.format(payment?.kkdf)}</td>
+            <td>{money.format(payment?.bsmv)}</td>
           </tr>
         ))}
       </tbody>

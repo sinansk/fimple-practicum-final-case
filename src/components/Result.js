@@ -7,6 +7,7 @@ import Modal from "./Modal";
 const Result = () => {
   const { result } = useResult();
   const modalRef = useRef();
+
   return (
     <>
       <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw]  sm:w-[50vw] min-h-80 h-80">
@@ -22,7 +23,7 @@ const Result = () => {
           </div>
           <div className="result-small-container">
             <h2 className="font-semibold">TAKSİT TUTARI</h2>
-            <p>{money.format(result?.months[0]?.payment)}</p>
+            <p>{money.format(result?.payments[0]?.payment)}</p>
           </div>
           <div className="result-small-container">
             <h2 className="font-semibold">TOPLAM VERGİ</h2>
