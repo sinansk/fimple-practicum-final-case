@@ -3,17 +3,6 @@ import { createContext, useState, useContext } from "react";
 const ResultContext = createContext();
 
 export const ResultProvider = ({ children }) => {
-  const defaultValues = {
-    months: [],
-    paymentPeriod: "",
-    numberOfPayment: "",
-    loan: "",
-    payment: "",
-    totalPayment: "",
-    totalInterestPayment: "",
-    totalKkdfPayment: "",
-    totalBsmvPayment: "",
-  };
   const [result, setResult] = useState(null);
 
   const values = {

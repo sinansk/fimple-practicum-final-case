@@ -1,9 +1,13 @@
+import RightSvgComponent from "../assets/RightSvgComponent";
 import UserForm from "../components/UserForm";
 
 const Home = () => {
   return (
-    <div className=" relative min-h-screen sm:min-h-[calc(76vh)] flex flex-col justify-center items-center w-screen mx-auto bg-[right_88px_top_0] sm:bg-right-bg-orange sm:dark:bg-right-bg-blue bg-no-repeat bg-contain animate-ltr-linear-right  ">
+    <div className="relative min-h-screen sm:min-h-[calc(76vh)] flex flex-col justify-center items-center w-screen mx-auto animate-ltr-linear-right  ">
       <UserForm />
+      <div className="hidden absolute right-0 bottom-0 sm:flex sm:min-h-[calc(76vh)] max-h-fit max-w-fit flex-grow animate-ltr-image-right text-orange-500 dark:text-cyan-500">
+        <RightSvgComponent />
+      </div>
     </div>
   );
 };
