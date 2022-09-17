@@ -106,7 +106,10 @@ const UserForm = () => {
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
-          <Form className="m-auto 2xl:text-2xl  bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] sm:w-[50vw] ">
+          <Form
+            data-testid="form"
+            className="m-auto 2xl:text-2xl  bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] lg:w-[50vw] "
+          >
             <div className="flex flex-col flex-1 col-span-3 gap-2 ">
               <label htmlFor="loan" className="dark:text-gray-50">
                 {errors.loan && touched.loan ? (
@@ -154,12 +157,12 @@ const UserForm = () => {
                   "border-2 border-red-400"
                 } form-input`}
                 id="paymentPeriodInput"
+                data-testid="paymentPeriodInput"
                 name="paymentPeriod"
                 type="number"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.paymentPeriod}
-                // defaultValue={30}
               >
                 {paymentPeriodOptions.map((item, i) => (
                   <option

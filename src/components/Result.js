@@ -10,7 +10,10 @@ const Result = () => {
 
   return (
     <>
-      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw]  sm:w-[50vw] ">
+      <div
+        data-testid="result"
+        className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw] lg:w-[50vw] "
+      >
         <h2 className="py-1 text-3xl text-center">
           {`${money.format(result.loan)}  ${result.numberOfPayment}  ${
             result.paymentPeriod
@@ -33,6 +36,7 @@ const Result = () => {
           </div>
         </div>
         <button
+          data-testid="resultButton"
           className="mt-auto btn btn-primary"
           onClick={() => modalRef.current.openModal()}
         >

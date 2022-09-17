@@ -18,7 +18,7 @@
     @apply h-10 col-span-6 font-semibold rounded-md dark:bg-cyan-500 bg-orange-500/90 hover:bg-orange-500/80 dark:hover:bg-cyan-500/80 2xl:h-12 text-gray-50;
   }
   .result-small-container {
-    @apply dark:bg-gray-700 dark:border-cyan-500 flex flex-col items-center justify-center bg-white rounded-md shadow-sm text-center border-[0.5px] border-orange-400;
+    @apply dark:bg-gray-600 dark:border-cyan-500 flex flex-col items-center justify-center bg-white rounded-md shadow-sm text-center border-[0.5px] border-orange-400;
   }
 }
 @layer utilities {
