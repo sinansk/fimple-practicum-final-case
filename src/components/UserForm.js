@@ -159,7 +159,7 @@ const UserForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.paymentPeriod}
-                defaultValue={30}
+                // defaultValue={30}
               >
                 {paymentPeriodOptions.map((item, i) => (
                   <option

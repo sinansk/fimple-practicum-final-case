@@ -14,10 +14,10 @@ const validations = Yup.object().shape({
     .positive("Lütfen pozitif bir değer giriniz.")
     .required("Lütfen faiz oranı giriniz"),
   kkdf: Yup.number()
-    .min(0, "0 veya daha büyük olmalı.")
+    .min(0, "Kkdf 0 veya daha büyük olmalı.")
     .required("Lütfen kkdf oranı giriniz."),
   bsmv: Yup.number()
-    .min(0, "0 veya daha büyük olmalı.")
+    .min(0, "Bsmv 0 veya daha büyük olmalı.")
     .required("Lütfen bsmv oranı giriniz."),
 });
 
