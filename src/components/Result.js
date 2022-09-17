@@ -10,15 +10,15 @@ const Result = () => {
 
   return (
     <>
-      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw] sm:h-80 sm:w-[50vw] 2xl:h-[44vh] lg:h-[50vh]">
+      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw]  sm:w-[50vw] ">
         <h2 className="py-1 text-3xl text-center">
           {`${money.format(result.loan)}  ${result.numberOfPayment}  ${
             result.paymentPeriod
           } VADELİ KREDİ`}
         </h2>
-        <div className="gap-3 mb-2 text-xl sm:grid sm:grid-cols-3 h-4/6">
+        <div className="gap-3 mb-2 text-xl 2xl:text-2xl sm:h-48 2xl:h-60 sm:grid sm:grid-cols-3">
           <div className="result-small-container">
-            <h2 className="font-semibold">TOPLAM GERİ ÖDEME</h2>
+            <h2 className="font-semibold ">TOPLAM GERİ ÖDEME</h2>
             <p>{money.format(result?.totalPayment)}</p>
           </div>
           <div className="result-small-container">

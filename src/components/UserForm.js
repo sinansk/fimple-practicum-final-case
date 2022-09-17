@@ -106,7 +106,7 @@ const UserForm = () => {
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
-          <Form className="m-auto 2xl:text-2xl  bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] sm:w-[50vw] 2xl:h-[44vh] lg:h-[50vh]">
+          <Form className="m-auto 2xl:text-2xl  bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 border-[0.5px] flex flex-col p-3 sm:grid sm:grid-cols-6 gap-3 rounded-xl border-gray-100 shadow-lg w-[90vw] sm:w-[50vw] ">
             <div className="flex flex-col flex-1 col-span-3 gap-2 ">
               <label htmlFor="loan" className="dark:text-gray-50">
                 {errors.loan && touched.loan ? (
@@ -269,7 +269,7 @@ const UserForm = () => {
                 value={values.bsmv}
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="mt-3 sm:mt-0 btn btn-primary">
               HESAPLA
             </button>
           </Form>
