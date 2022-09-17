@@ -29,7 +29,7 @@ const Modal = forwardRef((props, ref) => {
       >
         <button
           onClick={close}
-          className="flex btn rounded-sm ml-auto z-50 px-2.5 py-1 border-[1px] border-orange-400 dark:border-cyan-400 text-white bg-orange-500/90 dark:bg-cyan-500/90 dark:hover:bg-cyan-500/80 hover:bg-orange-500/80 border-orange-500-70 hover:text-white sticky top-0 -right-3"
+          className="flex btn rounded-sm ml-auto z-50 px-2.5 py-1 border-[1px] border-orange-400 dark:border-cyan-400 text-white bg-orange-500/90 dark:bg-cyan-500/90 dark:hover:bg-cyan-500/80 hover:bg-orange-500/80 border-orange-500-70 hover:text-white fixed top-0 right-0 sm:sticky sm:top-0 sm:-right-3"
         >
           X
         </button>
