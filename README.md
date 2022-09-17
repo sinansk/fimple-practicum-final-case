@@ -5,7 +5,6 @@
 - It is a loan calculator which you can choose repayment period and maturity.
 - You can set tax rates, if you dont want to include taxes you can give 0.
 - Localization is upcoming.
-  \
 
 ## Run project on local
 
@@ -22,12 +21,14 @@
 - `useContext, useRef, forwardRef, useInperativeHandle, createPortal`
 - `Tailwind`
 - `React Router`
+- `Formik`
+- `Yup`
+- `React-Text-Mask`
 
-It is deployed on Netlify.
+It is deployed on [Netlify](https://fimple-final-case-sinan.netlify.app/)
 
-[![Loan Calculator React](https://github.com/sinansk/mern-shopping-app/blob/main/client/public/shopping-app.JPG)](https://fimple-final-case-sinan.netlify.app/)
-[![Loan Calculator React](https://github.com/sinansk/mern-shopping-app/blob/main/client/public/mern-shopping.PNG)](https://fimple-final-case-sinan.netlify.app/)
-[![Loan Calculator React](https://github.com/sinansk/mern-shopping-app/blob/main/client/public/mern-shopping-4.PNG)](https://fimple-final-case-sinan.netlify.app/)
-[![Loan Calculator React](https://github.com/sinansk/mern-shopping-app/blob/main/client/public/mern-shopping-3.PNG)](https://fimple-final-case-sinan.netlify.app/)
-[![Loan Calculator React](https://github.com/sinansk/mern-shopping-app/blob/main/client/public/mern-shopping-5.PNG)](https://fimple-final-case-sinan.netlify.app/)
-[![Loan Calculator React](https://github.com/sinansk/mern-shopping-app/blob/main/client/public/mern-shopping-6.PNG)](https://fimple-final-case-sinan.netlify.app/)
+[![Loan Calculator React](https://github.com/sinansk/fimple-practicum-final-case/blob/main/public/home.PNG)](https://fimple-final-case-sinan.netlify.app/)
+[![Loan Calculator React](https://github.com/sinansk/fimple-practicum-final-case/blob/main/public/home-dark.PNG)](https://fimple-final-case-sinan.netlify.app/)
+[![Loan Calculator React](https://github.com/sinansk/fimple-practicum-final-case/blob/main/public/result-dark.PNG)](https://fimple-final-case-sinan.netlify.app/)
+[![Loan Calculator React](https://github.com/sinansk/fimple-practicum-final-case/blob/main/public/modal-dark.PNG)](https://fimple-final-case-sinan.netlify.app/)
+[![Loan Calculator React](https://github.com/sinansk/fimple-practicum-final-case/blob/main/public/not-found-dark.PNG)](https://fimple-final-case-sinan.netlify.app/)

@@ -11,13 +11,13 @@ const UserForm = () => {
 
   const calculateLoan = (values) => {
     let periodName =
-      values.paymentPeriod === "0.23333333333333334" // for showing payment period on result page, getting form value and converting//
+      values.paymentPeriod === "0.23333333333333334" // for showing payment period on result page, getting form value and converting to name//
         ? `HAFTA`
         : values.paymentPeriod === 1
         ? `AY`
         : `YIL`;
     let installment = 1;
-    let loan = values.loan.replace(/[.,\s]/g, ""); //removing , and . from loan input for calculating//
+    let loan = values.loan.replace(/[.,\s]/g, ""); //removing ',' and '.' from loan input for calculating//
     let remainPrincipal = loan;
     let interestRate = (values.interest / 100) * values.paymentPeriod;
     let totalRate =
