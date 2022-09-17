@@ -1,5 +1,5 @@
 import { useResult } from "../context/ResultContext";
-import { money } from "../functions/moneyFormat";
+import { money } from "../utils/moneyFormat";
 import ResultTable from "./ResultTable";
 import { useRef } from "react";
 import Modal from "./Modal";
