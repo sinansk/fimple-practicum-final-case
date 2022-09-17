@@ -10,7 +10,7 @@ const Result = () => {
 
   return (
     <>
-      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw]  sm:w-[50vw] min-h-80 h-80">
+      <div className="bg-gray-50 dark:border-cyan-500 dark:bg-slate-700 dark:text-gray-50 border-[0.5px] flex flex-col p-3 rounded-xl border-gray-100 shadow-lg w-[90vw] sm:w-[50vw] 2xl:h-[44vh] sm:h-[50vh]">
         <h2 className="py-1 text-3xl text-center">
           {`${money.format(result.loan)}  ${result.numberOfPayment}  ${
             result.paymentPeriod

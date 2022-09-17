@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PageNotFound = () => {
   return (
-    <div className="min-h-screen sm:min-h-[calc(76vh)]  w-screen grid items-center">
+    <div className="min-h-screen sm:min-h-[calc(76vh)] w-screen grid items-center">
       <div className="flex flex-grow mx-auto text-orange-500 h-80 sm:h-96 dark:text-cyan-500">
         <NotFoundSvg />
       </div>
