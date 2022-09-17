@@ -1,9 +1,10 @@
 import { useResult } from "../context/ResultContext";
-import { money } from "../utils";
+import { money } from "../utils/moneyFormat";
 import React from "react";
 
 const ResultTable = () => {
   const { result } = useResult();
+
   return (
     <table className="w-full h-full p-5 text-lg text-center border-collapse table-auto divide-solid 2xl:text-2xl">
       <thead className="sticky top-0 left-0 w-full p-5 mr-5 text-orange-500 bg-white border-b-2 dark:text-cyan-400 dark:bg-gray-700 ">

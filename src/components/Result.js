@@ -1,6 +1,6 @@
 import { useResult } from "../context/ResultContext";
+import { money } from "../functions/moneyFormat";
 import ResultTable from "./ResultTable";
-import { money } from "../utils";
 import { useRef } from "react";
 import Modal from "./Modal";
 
@@ -19,7 +19,7 @@ const Result = () => {
             result.paymentPeriod
           } VADELİ KREDİ`}
         </h2>
-        <div className="gap-3 mb-2 text-xl 2xl:text-2xl sm:h-48 2xl:h-60 sm:grid sm:grid-cols-3">
+        <div className="flex flex-col gap-3 mb-2 text-xl 2xl:text-2xl sm:h-48 2xl:h-60 sm:grid sm:grid-cols-3">
           <div className="result-small-container">
             <h2 className="font-semibold ">TOPLAM GERİ ÖDEME</h2>
             <p>{money.format(result?.totalPayment)}</p>
